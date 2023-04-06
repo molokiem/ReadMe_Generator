@@ -31,10 +31,10 @@ const questions = [
   },
   // LICENSE
   {
-    type: "checkbox",
+    type: "list",
     name: "license",
     message: "Please select a license applicable to this project.",
-    choices: ["MIT", "APACHE2.0", "Boost1.0", "MPL2.0", "BSD2", "BSD3", "none"],
+    choices: ["BSD3", "MIT", "GPL", "None"],
   },
   // CONTRIBUTORS
   {
@@ -49,7 +49,7 @@ const questions = [
     name: "test",
     messgae: "What command should be ran to test the project?",
   },
-//   QUESTIONS
+  //   QUESTIONS
   {
     type: "input",
     name: "username",
@@ -64,22 +64,20 @@ const questions = [
 
 // TODO: Create a function to write README file
 function writeToFile(fileName, data) {
-  // var content = generateMarkdown(data);
-  fs.writeFile(fileName, content, function (error) {
+  fs.writeFile(fileName, data, function (error) {
     if (error) {
       return console.log(error);
     }
     console.log("File written successfully");
   });
-};
+}
 
 // TODO: Create a function to initialize app
-function init() 
-    inquirer.prompt(questions).then(function (data) {
-        // var fileName = "README.md";
-        writeToFile('./README.md', generateMarkdown(data));
-    });
-
+function init() {
+  inquirer.prompt(questions).then(function (data) {
+    writeToFile("README.md", generateMarkdown(data));
+  });
+}
 
 // Function call to initialize app
 init();

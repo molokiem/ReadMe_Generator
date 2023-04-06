@@ -28,7 +28,7 @@ function renderLicenseLink(license) {
     return "[GPL](https://www.gnu.org/licenses/gpl-3.0)";
   }
   {
-    if (license === "none") {
+    if (license === "None") {
       return "";
     }
   }
@@ -37,7 +37,7 @@ function renderLicenseLink(license) {
 // TODO: Create a function that returns the license section of README
 // If there is no license, return an empty string
 function renderLicenseSection(license) {
-  if (license === "none") {
+  if (license === "None") {
     return "";
   }
   return `## **License**
@@ -46,41 +46,38 @@ function renderLicenseSection(license) {
 
 // TODO: Create a function to generate markdown for README
 function generateMarkdown(data) {
-  return `# **${data.title}**
+  return `# ${data.title}
 
-  ## **Description**
+  ## Description
   - ${data.description}
 
   ## Table of Contents
-  - [Installation]
-  - [Usage]
-  - [Testing](#testing)
-  - [Contribution](#contribution)
+  - [Installation](#installlink)
+  - [Usage](#usagelink)
+  - [Contribution](#contributionlink)]
+  - [Testing](#testinglink)
   - ${renderLicenseLink(data.license)}
-  - [Questions](#questions)
+  - [Questions](#questionslink)
 
-  ## **Installation**
+  ## Installation
   ${data.install}
 
-  ## **Usage**
+  ## Usage
   ${data.usage}
 
-  ##Contribution**
+  ## Contribution
   ${data.contribute}
 
-  ##Testing**
+  ## Testing
   ${data.test}
 
   ${renderLicenseBadge(data.license)}
   ${renderLicenseSection(data.license)}
 
-  ##Questions**
-  Contact with any questions regarding this project, contact the following email [${
-    data.email
-  }](mailto:${data.email}).
-  You can find this repository at ${data.username}](https://www.github.com/${
-    data.username
-  }).
+  ## Questions
+  [My Email](mailto:${data.email})
+  
+  [My Github](https://github.com/${data.username})
 `;
 }
 
